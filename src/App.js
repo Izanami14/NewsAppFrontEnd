@@ -33,7 +33,7 @@ class App extends Component {
     let middle = [];
     let outer = [];
 
-    for (let index = 0; index < this.state.apiResponse.length; index++) {
+    for (let index = 0; index < 12; index++) {
       if (index === 0 || index % 3 === 0) {
         middle = [];
         outer.push
