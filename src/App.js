@@ -32,14 +32,7 @@ class App extends Component {
   render() {
     let middle = [];
     let outer = [];
-    return(
-      <div className="App">
-        <div className="container">
-        <p>"Here is what it is"</p>
-       </div>
-      </div>
 
-    );
     for (let index = 0; index < this.state.apiResponse.length; index++) {
       if (index === 0 || index % 3 === 0) {
         middle = [];
