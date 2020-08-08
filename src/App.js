@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   callApi() {
-    fetch("http://localhost:3000/test")
+    fetch("https://backendnews.herokuapp.com/test")
       .then(res => res.text())
       .then((res) => {
         this.setState(
