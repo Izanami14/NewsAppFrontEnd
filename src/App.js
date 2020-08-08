@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CardView from './components/card'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Pagination from 'react-bootstrap/Pagination'
 
 class App extends Component {
 
@@ -11,10 +12,9 @@ class App extends Component {
   }
 
   callApi() {
-    fetch("http://localhost:9000/test")
+    fetch("http://localhost:3000/test")
       .then(res => res.text())
       .then((res) => {
-        console.log(res);
         this.setState(
           {
             apiResponse: JSON.parse(res)
@@ -32,8 +32,7 @@ class App extends Component {
   render() {
     let middle = [];
     let outer = [];
-
-    for (let index = 0; index < 12; index++) {
+    for (let index = 0; index < this.state.apiResponse.length; index++) {
       if (index === 0 || index % 3 === 0) {
         middle = [];
         outer.push
@@ -43,7 +42,7 @@ class App extends Component {
       }
       middle.push(
         <div className="col-sm">
-          <CardView />
+          <CardView values={this.state.apiResponse[index]} />
         </div>
       )
       outer[outer.length - 1] = <div className="row top-buffer">
@@ -52,12 +51,14 @@ class App extends Component {
 
     }
     return (
-      <div className="App">
-        <div className="container">
-          {outer}
-        </div>
+      <Pagination >
+        <div className="App">
+          <div className="container">
+            {outer}
+          </div>
 
-      </div>
+        </div>
+      </Pagination>
     );
   }
 }
